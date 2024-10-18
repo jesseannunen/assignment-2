@@ -61,7 +61,7 @@ function SearchDrink() {
             {randomCocktail ? (
                 <div>
                     <h2> {randomCocktail.strDrink} </h2>
-                    <img src={randomCocktail.strDrinkThumb} alt= {randomCocktail.strDrink} style={{ width: '200px', height: 'auto' }} />
+                    <img src={randomCocktail.strDrinkThumb} alt={randomCocktail.strDrink} style={{ width: '200px', height: 'auto' }} />
                     <p><strong>Glass:</strong> {randomCocktail.strGlass} </p>
                     <p><strong>Instructions: </strong>{randomCocktail.strInstructions} </p>
                     <ul>
@@ -94,7 +94,12 @@ function SearchDrink() {
 
                     <ul>
                         {cocktails.map((drink, index) => (
-                            <li key={index}> {drink.strDrink} </li>
+                            <li key={index}>
+                                <img src={drink.strDrinkThumb} alt={drink.strDrink} style={{ width: '100px', height: 'auto' }} />
+                                <a href={`https://www.thecocktaildb.com/drink/${drink.idDrink}`} target="_blank" rel="noopener noreferrer">
+                                    {drink.strDrink}
+                                </a>
+                            </li>
                         ))}
                     </ul>
                 ) : (
