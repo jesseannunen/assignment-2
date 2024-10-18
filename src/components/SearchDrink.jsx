@@ -61,6 +61,7 @@ function SearchDrink() {
             {randomCocktail ? (
                 <div>
                     <h2> {randomCocktail.strDrink} </h2>
+                    <img src={randomCocktail.strDrinkThumb} alt= {randomCocktail.strDrink} style={{ width: '200px', height: 'auto' }} />
                     <p><strong>Glass:</strong> {randomCocktail.strGlass} </p>
                     <p><strong>Instructions: </strong>{randomCocktail.strInstructions} </p>
                     <ul>
