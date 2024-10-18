@@ -5,7 +5,7 @@ function SearchDrink() {
 
 
 
-    const [cocktailName, setCocktailName] = useState(" ");
+    const [cocktailName, setCocktailName] = useState("");
     const [cocktails, setCocktails] = useState([]);
     const [error, setError] = useState(null);
     const [randomCocktail, setRandomCocktail] = useState(null);
@@ -30,10 +30,9 @@ function SearchDrink() {
 
     const fetchCocktails = async (name) => {
         try {
-            const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}");
+            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
             const data = await response.json();
-
-
+            console.log(data);
 
 
             if (data.drinks) {
@@ -76,7 +75,7 @@ function SearchDrink() {
                 <p>Loading... </p>
             )}
 
-            <hr/>
+            <hr />
 
             <input
                 type="text"
@@ -89,18 +88,22 @@ function SearchDrink() {
 
             {error && <p>{error}</p>}
 
-            <ul>
-                {cocktails.map((drink, index) => (
-                    <li key={index}> {drink.strDrink} </li>
-                ))}
-            </ul>
+            <div>
+                {cocktails.length > 0 ? (
 
+                    <ul>
+                        {cocktails.map((drink, index) => (
+                            <li key={index}> {drink.strDrink} </li>
+                        ))}
+                    </ul>
+                ) : (
+                    !error && <p>{error}</p>
+                )}
 
-
-
+            </div>
         </div>
     );
-};
+}
 
 
 
